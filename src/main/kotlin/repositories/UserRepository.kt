@@ -1,0 +1,63 @@
+package org.olahraga.repositories
+
+import org.olahraga.dao.UserDAO
+import org.olahraga.entities.User
+import org.olahraga.helpers.suspendTransaction
+import org.olahraga.helpers.userDAOToModel
+import org.olahraga.tables.UserTable
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
+import org.jetbrains.exposed.sql.deleteWhere
+import java.util.UUID
+
+class UserRepository : IUserRepository {
+
+    override suspend fun getById(userId: String): User? = suspendTransaction {
+        UserDAO
+            .find { UserTable.id eq UUID.fromString(userId) }
+            .limit(1)
+            .map(::userDAOToModel)
+            .firstOrNull()
+    }
+
+    override suspend fun getByUsername(username: String): User? = suspendTransaction {
+        UserDAO
+            .find { UserTable.username eq username }
+            .limit(1)
+            .map(::userDAOToModel)
+            .firstOrNull()
+    }
+
+    override suspend fun create(user: User): String = suspendTransaction {
+        val dao = UserDAO.new {
+            name      = user.name
+            username  = user.username
+            password  = user.password
+            about     = user.about
+            createdAt = user.createdAt
+            updatedAt = user.updatedAt
+        }
+        dao.id.value.toString()
+    }
+
+    override suspend fun update(id: String, newUser: User): Boolean = suspendTransaction {
+        val dao = UserDAO
+            .find { UserTable.id eq UUID.fromString(id) }
+            .limit(1)
+            .firstOrNull()
+
+        if (dao != null) {
+            dao.name      = newUser.name
+            dao.username  = newUser.username
+            dao.password  = newUser.password
+            dao.photo     = newUser.photo
+            dao.about     = newUser.about
+            dao.updatedAt = newUser.updatedAt
+            true
+        } else false
+    }
+
+    override suspend fun delete(id: String): Boolean = suspendTransaction {
+        val rows = UserTable.deleteWhere { UserTable.id eq UUID.fromString(id) }
+        rows >= 1
+    }
+}

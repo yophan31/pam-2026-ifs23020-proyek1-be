@@ -1,0 +1,187 @@
+## Global Variable
+#@BaseUrl = http://localhost:8080
+@BaseUrl = https://pam-2026-proyek1-ifs23010-be.ifs23010.fun:8080/
+
+### ══════════════════════════════════════
+## AUTH
+### ══════════════════════════════════════
+
+### Daftar akun baru
+# @name PostRegister
+POST {{BaseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "name": "Tester",
+  "username": "tester",
+  "password": "tester123"
+}
+
+### Login
+# @name PostLogin
+POST {{BaseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "tester",
+  "password": "tester123"
+}
+
+> {%
+    client.global.set("authToken",    response.body.data.authToken);
+    client.global.set("refreshToken", response.body.data.refreshToken);
+%}
+
+### Refresh Token
+# @name PostRefreshToken
+POST {{BaseUrl}}/auth/refresh-token
+Content-Type: application/json
+
+{
+  "authToken":    "{{authToken}}",
+  "refreshToken": "{{refreshToken}}"
+}
+
+> {%
+    client.global.set("authToken",    response.body.data.authToken);
+    client.global.set("refreshToken", response.body.data.refreshToken);
+%}
+
+### Logout
+# @name PostLogout
+POST {{BaseUrl}}/auth/logout
+Content-Type: application/json
+
+{
+  "authToken": "{{authToken}}"
+}
+
+### ══════════════════════════════════════
+## USERS
+### ══════════════════════════════════════
+
+### Ambil profil saya
+# @name GetMe
+GET {{BaseUrl}}/users/me
+Authorization: Bearer {{authToken}}
+
+> {%
+    client.global.set("userId", response.body.data.user.id);
+%}
+
+### Update profil saya
+# @name PutMe
+PUT {{BaseUrl}}/users/me
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "name": "Tester Update",
+  "username": "tester"
+}
+
+### Ganti password
+# @name PutMyPassword
+PUT {{BaseUrl}}/users/me/password
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "password":    "tester123",
+  "newPassword": "tester123"
+}
+
+### Upload foto profil
+# @name PutMyPhoto
+PUT {{BaseUrl}}/users/me/photo
+Authorization: Bearer {{authToken}}
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="photo.png"
+Content-Type: image/png
+
+< ./uploads/examples/photo.png
+--WebAppBoundary--
+
+### Ambil foto user berdasarkan id
+@userId = 00000000-0000-0000-0000-000000000000
+# @name GetUserPhoto
+GET {{BaseUrl}}/images/users/{{userId}}
+
+### ══════════════════════════════════════
+## SPORT EVENTS
+### ══════════════════════════════════════
+
+### Ambil statistik event (Home)
+# @name GetStats
+GET {{BaseUrl}}/sport-events/stats
+Authorization: Bearer {{authToken}}
+
+### Ambil semua event (dengan filter opsional)
+# @name GetAllEvents
+GET {{BaseUrl}}/sport-events?search=&status=akan datang&kategori=Sepak Bola&page=1&perPage=10
+Authorization: Bearer {{authToken}}
+
+### Tambah event baru
+# @name PostEvent
+POST {{BaseUrl}}/sport-events
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "title":         "Liga Futsal Antar Fakultas 2026",
+  "description":   "Turnamen futsal tahunan yang mempertemukan tim-tim terbaik dari setiap fakultas.",
+  "kategori":      "Futsal",
+  "tanggalEvent":  "2026-04-20",
+  "lokasi":        "GOR Universitas Delcom, Medan",
+  "status":        "akan datang",
+  "penyelenggara": "BEM Universitas Delcom"
+}
+
+> {%
+    client.global.set("sportEventId", response.body.data.sportEventId);
+%}
+
+### Ambil event berdasarkan id
+# @name GetEventById
+GET {{BaseUrl}}/sport-events/{{sportEventId}}
+Authorization: Bearer {{authToken}}
+
+### Update event
+# @name PutEvent
+PUT {{BaseUrl}}/sport-events/{{sportEventId}}
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "title":         "Liga Futsal Antar Fakultas 2026 (Revisi)",
+  "description":   "Turnamen futsal tahunan yang mempertemukan tim-tim terbaik dari setiap fakultas. Pendaftaran diperpanjang.",
+  "kategori":      "Futsal",
+  "tanggalEvent":  "2026-04-25",
+  "lokasi":        "GOR Universitas Delcom, Medan",
+  "status":        "berlangsung",
+  "penyelenggara": "BEM Universitas Delcom"
+}
+
+### Upload cover event
+# @name PutEventCover
+PUT {{BaseUrl}}/sport-events/{{sportEventId}}/cover
+Authorization: Bearer {{authToken}}
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="cover.png"
+Content-Type: image/png
+
+< ./uploads/examples/photo.png
+--WebAppBoundary--
+
+### Ambil cover event
+# @name GetEventCover
+GET {{BaseUrl}}/images/sport-events/{{sportEventId}}
+
+### Hapus event
+# @name DeleteEvent
+DELETE {{BaseUrl}}/sport-events/{{sportEventId}}
+Authorization: Bearer {{authToken}}
