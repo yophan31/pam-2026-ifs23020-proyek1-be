@@ -1,6 +1,6 @@
-package org.olahraga.dao
+package org.delcom.dao
 
-import org.olahraga.tables.UserTable
+import org.delcom.tables.UserTable
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.Entity
 import org.jetbrains.exposed.dao.EntityClass

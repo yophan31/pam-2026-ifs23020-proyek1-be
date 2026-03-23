@@ -1,10 +1,10 @@
-package org.olahraga.repositories
+package org.delcom.repositories
 
-import org.olahraga.dao.RefreshTokenDAO
-import org.olahraga.entities.RefreshToken
-import org.olahraga.helpers.refreshTokenDAOToModel
-import org.olahraga.helpers.suspendTransaction
-import org.olahraga.tables.RefreshTokenTable
+import org.delcom.dao.RefreshTokenDAO
+import org.delcom.entities.RefreshToken
+import org.delcom.helpers.refreshTokenDAOToModel
+import org.delcom.helpers.suspendTransaction
+import org.delcom.tables.RefreshTokenTable
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.and
 import org.jetbrains.exposed.sql.deleteWhere

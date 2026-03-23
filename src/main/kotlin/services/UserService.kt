@@ -1,4 +1,4 @@
-package org.olahraga.services
+package org.delcom.services
 
 import io.ktor.http.*
 import io.ktor.http.content.*
@@ -9,10 +9,10 @@ import io.ktor.util.cio.*
 import io.ktor.utils.io.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import org.olahraga.data.*
-import org.olahraga.helpers.*
-import org.olahraga.repositories.IRefreshTokenRepository
-import org.olahraga.repositories.IUserRepository
+import org.delcom.data.*
+import org.delcom.helpers.*
+import org.delcom.repositories.IRefreshTokenRepository
+import org.delcom.repositories.IUserRepository
 import java.io.File
 import java.util.UUID
 

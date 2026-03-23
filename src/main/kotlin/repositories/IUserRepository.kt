@@ -1,6 +1,6 @@
-package org.olahraga.repositories
+package org.delcom.repositories
 
-import org.olahraga.entities.User
+import org.delcom.entities.User
 
 interface IUserRepository {
     suspend fun getById(userId: String): User?

@@ -1,4 +1,4 @@
-package org.olahraga
+package org.delcom
 
 import io.ktor.http.*
 import io.ktor.server.application.*
@@ -6,13 +6,13 @@ import io.ktor.server.auth.*
 import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import org.olahraga.data.AppException
-import org.olahraga.data.ErrorResponse
-import org.olahraga.helpers.JWTConstants
-import org.olahraga.helpers.parseMessageToMap
-import org.olahraga.services.AuthService
-import org.olahraga.services.SportEventService
-import org.olahraga.services.UserService
+import org.delcom.data.AppException
+import org.delcom.data.ErrorResponse
+import org.delcom.helpers.JWTConstants
+import org.delcom.helpers.parseMessageToMap
+import org.delcom.services.AuthService
+import org.delcom.services.SportEventService
+import org.delcom.services.UserService
 import org.koin.ktor.ext.inject
 
 fun Application.configureRouting() {

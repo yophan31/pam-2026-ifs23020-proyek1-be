@@ -1,4 +1,4 @@
-package org.olahraga.tables
+package org.delcom.tables
 
 import org.jetbrains.exposed.dao.id.UUIDTable
 import org.jetbrains.exposed.sql.kotlin.datetime.timestamp

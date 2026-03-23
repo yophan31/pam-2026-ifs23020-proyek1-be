@@ -1,11 +1,11 @@
-package org.olahraga.helpers
+package org.delcom.helpers
 
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
 import io.ktor.server.auth.jwt.*
-import org.olahraga.data.AppException
-import org.olahraga.entities.User
-import org.olahraga.repositories.IUserRepository
+import org.delcom.data.AppException
+import org.delcom.entities.User
+import org.delcom.repositories.IUserRepository
 
 object ServiceHelper {
     suspend fun getAuthUser(call: ApplicationCall, userRepository: IUserRepository): User {

@@ -1,4 +1,4 @@
-package org.olahraga.helpers
+package org.delcom.helpers
 
 import io.ktor.server.application.*
 import org.jetbrains.exposed.sql.Database

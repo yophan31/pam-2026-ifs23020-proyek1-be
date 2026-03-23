@@ -1,6 +1,6 @@
-package org.olahraga.repositories
+package org.delcom.repositories
 
-import org.olahraga.entities.SportEvent
+import org.delcom.entities.SportEvent
 
 interface ISportEventRepository {
     suspend fun getAll(

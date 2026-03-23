@@ -1,4 +1,4 @@
-package org.olahraga.helpers
+package org.delcom.helpers
 
 object JWTConstants {
     const val NAME = "auth-jwt"

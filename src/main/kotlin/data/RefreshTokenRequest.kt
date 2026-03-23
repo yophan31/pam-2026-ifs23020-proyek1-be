@@ -1,7 +1,7 @@
-package org.olahraga.data
+package org.delcom.data
 
 import kotlinx.serialization.Serializable
-import org.olahraga.entities.RefreshToken
+import org.delcom.entities.RefreshToken
 
 @Serializable
 data class RefreshTokenRequest(

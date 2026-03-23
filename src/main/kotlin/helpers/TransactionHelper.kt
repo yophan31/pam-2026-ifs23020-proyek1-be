@@ -1,12 +1,12 @@
-package org.olahraga.helpers
+package org.delcom.helpers
 
 import kotlinx.coroutines.Dispatchers
-import org.olahraga.dao.RefreshTokenDAO
-import org.olahraga.dao.SportEventDAO
-import org.olahraga.dao.UserDAO
-import org.olahraga.entities.RefreshToken
-import org.olahraga.entities.SportEvent
-import org.olahraga.entities.User
+import org.delcom.dao.RefreshTokenDAO
+import org.delcom.dao.SportEventDAO
+import org.delcom.dao.UserDAO
+import org.delcom.entities.RefreshToken
+import org.delcom.entities.SportEvent
+import org.delcom.entities.User
 import org.jetbrains.exposed.sql.Transaction
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 

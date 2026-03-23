@@ -1,4 +1,4 @@
-package org.olahraga.entities
+package org.delcom.entities
 
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant

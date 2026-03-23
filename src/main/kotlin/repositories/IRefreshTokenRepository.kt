@@ -1,6 +1,6 @@
-package org.olahraga.repositories
+package org.delcom.repositories
 
-import org.olahraga.entities.RefreshToken
+import org.delcom.entities.RefreshToken
 
 interface IRefreshTokenRepository {
     suspend fun getByToken(refreshToken: String, authToken: String): RefreshToken?

@@ -1,9 +1,9 @@
-package org.olahraga.module
+package org.delcom.module
 
-import org.olahraga.repositories.*
-import org.olahraga.services.AuthService
-import org.olahraga.services.SportEventService
-import org.olahraga.services.UserService
+import org.delcom.repositories.*
+import org.delcom.services.AuthService
+import org.delcom.services.SportEventService
+import org.delcom.services.UserService
 import org.koin.dsl.module
 
 fun appModule(jwtSecret: String) = module {

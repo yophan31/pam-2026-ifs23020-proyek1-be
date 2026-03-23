@@ -1,10 +1,10 @@
-package org.olahraga.repositories
+package org.delcom.repositories
 
-import org.olahraga.dao.UserDAO
-import org.olahraga.entities.User
-import org.olahraga.helpers.suspendTransaction
-import org.olahraga.helpers.userDAOToModel
-import org.olahraga.tables.UserTable
+import org.delcom.dao.UserDAO
+import org.delcom.entities.User
+import org.delcom.helpers.suspendTransaction
+import org.delcom.helpers.userDAOToModel
+import org.delcom.tables.UserTable
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.deleteWhere
 import java.util.UUID

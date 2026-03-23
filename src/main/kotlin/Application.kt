@@ -1,4 +1,4 @@
-package org.olahraga
+package org.delcom
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
@@ -13,9 +13,9 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.plugins.cors.routing.*
 import io.ktor.server.response.*
 import kotlinx.serialization.json.Json
-import org.olahraga.helpers.JWTConstants
-import org.olahraga.helpers.configureDatabases
-import org.olahraga.module.appModule
+import org.delcom.helpers.JWTConstants
+import org.delcom.helpers.configureDatabases
+import org.delcom.module.appModule
 import org.koin.ktor.plugin.Koin
 
 fun main(args: Array<String>) {

@@ -1,6 +1,6 @@
-package org.olahraga.helpers
+package org.delcom.helpers
 
-import org.olahraga.data.AppException
+import org.delcom.data.AppException
 
 class ValidatorHelper(private val data: Map<String, Any?>) {
 

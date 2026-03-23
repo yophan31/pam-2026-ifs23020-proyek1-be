@@ -1,8 +1,8 @@
-package org.olahraga.data
+package org.delcom.data
 
 import kotlinx.datetime.Clock
 import kotlinx.serialization.Serializable
-import org.olahraga.entities.SportEvent
+import org.delcom.entities.SportEvent
 
 @Serializable
 data class SportEventRequest(

@@ -1,10 +1,10 @@
-package org.olahraga.repositories
+package org.delcom.repositories
 
-import org.olahraga.dao.SportEventDAO
-import org.olahraga.entities.SportEvent
-import org.olahraga.helpers.sportEventDAOToModel
-import org.olahraga.helpers.suspendTransaction
-import org.olahraga.tables.SportEventTable
+import org.delcom.dao.SportEventDAO
+import org.delcom.entities.SportEvent
+import org.delcom.helpers.sportEventDAOToModel
+import org.delcom.helpers.suspendTransaction
+import org.delcom.tables.SportEventTable
 import org.jetbrains.exposed.sql.SortOrder
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.and
